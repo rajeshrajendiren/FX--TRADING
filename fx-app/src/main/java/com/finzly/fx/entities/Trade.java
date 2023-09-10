@@ -7,18 +7,14 @@ import jakarta.persistence.Id;
 public class Trade {
 
 	@Id
-
 	private int tradeNo;
-
 	private String name;
-
 	private String currencyPair;
-
 	private double transferAmount;
 	private double convertedAmount;
 
 	public Trade() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public int getTradeno() {

@@ -7,7 +7,7 @@ import com.finzly.fx.entities.Trade;
 
 @Service
 public class TradeServices {
-	private List<Trade> tradelist = new ArrayList<>();
+	private List<Trade> tradeList = new ArrayList<>();
 	private double usdInr = 66;
 	private int tradeId = 1;
 
@@ -30,22 +30,20 @@ public class TradeServices {
 		return false;
 	}
 
-	public boolean isValidCurrencyPair(String currencypair) {
-		if (currencypair.equalsIgnoreCase("usdinr")) {
+	public boolean isValidCurrencyPair(String currencyPair) {
+		if (currencyPair.equalsIgnoreCase("usdinr")) {
 			return true;
 		}
 		return false;
 	}
 
 	public String bookTrade(Trade trade) {
-		System.out.println("service called");
-
-		if (isValidName(trade.getName()) && isValidCurrency(trade.getTransferAmount())
+		if (trade!=null && isValidName(trade.getName()) && isValidCurrency(trade.getTransferAmount())
 				&& isValidCurrencyPair(trade.getCurrencyPair())) {
 			trade.setTradeno(tradeId++);
 			System.out.println(trade.toString());
 			trade.setConvertedAmount(currencyConvert(trade.getTransferAmount()));
-			tradelist.add(trade);
+			tradeList.add(trade);
 			return "Trade for USDINR booked with rate " + usdInr + "," + " The amount of Rs "
 					+ trade.getConvertedAmount() + " will be transfered within 2 working days to " + trade.getName();
 
@@ -57,7 +55,7 @@ public class TradeServices {
 
 	public List<Trade> printTrade() {
 
-		return tradelist;
+		return tradeList;
 	}
 
 }

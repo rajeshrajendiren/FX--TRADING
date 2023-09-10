@@ -15,14 +15,13 @@ import com.finzly.fx.services.TradeServices;
 @RestController
 @RequestMapping("/api")
 public class TradeController {
+
 	@Autowired
 	TradeServices services;
 
-	
 	@PostMapping("/booktrade")
 	public String createTrade(@RequestBody Trade trade) {
-		String tr = services.bookTrade(trade);
-		return tr;
+		return services.bookTrade(trade);
 	}
 
 	@GetMapping("/showalltrade")
